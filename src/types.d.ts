@@ -3,3 +3,5 @@ type Product = {
   name: string;
   price: number;
 };
+
+type CartProduct = Product & { quantity: number };

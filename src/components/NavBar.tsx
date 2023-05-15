@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
+import { NavLink } from 'react-router-dom';
 
 export const NavBar = () => {
   return (
@@ -8,7 +8,9 @@ export const NavBar = () => {
       <Navbar.Brand href='/'>E-commerce Store</Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className='justify-content-end'>
-        <Button>Cart 0 items</Button>
+        <NavLink to='/cart' className='btn btn-primary'>
+          Cart 0 Items
+        </NavLink>
       </Navbar.Collapse>
     </Navbar>
   );
