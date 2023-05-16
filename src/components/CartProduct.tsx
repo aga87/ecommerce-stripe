@@ -4,7 +4,8 @@ import Card from 'react-bootstrap/Card';
 import { useAppDispatch } from '../redux/typed-hooks';
 import {
   addToCart,
-  removeOneFromCart
+  removeOneFromCart,
+  removeFromCart
 } from '../redux/reducers/cartProductsSlice';
 
 type CartProductProps = {
@@ -23,6 +24,10 @@ export const CartProduct = ({ cartProduct }: CartProductProps) => {
     dispatch(removeOneFromCart(cartProduct.id));
   };
 
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(cartProduct.id));
+  };
+
   const { name, price, quantity } = cartProduct;
 
   const totalCost = `€${(quantity * price).toFixed(2)}`;
@@ -33,11 +38,11 @@ export const CartProduct = ({ cartProduct }: CartProductProps) => {
         <Card.Title>{name}</Card.Title>
         <Card.Text>Total {totalCost}</Card.Text>
         <Card.Text>Quantity</Card.Text>
-        <div>
+        <div style={{ marginBottom: '10px' }}>
           <Button
             size='sm'
             onClick={handleRemoveOneFromCart}
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '10px', width: '30px' }}
           >
             -
           </Button>
@@ -45,11 +50,14 @@ export const CartProduct = ({ cartProduct }: CartProductProps) => {
           <Button
             size='sm'
             onClick={handleAddToCart}
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: '10px', width: '30px' }}
           >
             +
           </Button>
         </div>
+        <Button variant='danger' size='sm' onClick={handleRemoveFromCart}>
+          Remove
+        </Button>
       </Card.Body>
     </Card>
   );
