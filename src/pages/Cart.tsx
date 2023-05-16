@@ -3,26 +3,15 @@ import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { CartProduct } from '../components/CartProduct';
 import { useAppSelector } from '../redux/typed-hooks';
-import { selectCartProductsQuantity } from '../redux/selectors/cartProductsSelectors';
-
-// Mock data
-const cartProducts: CartProduct[] = [
-  {
-    id: '1',
-    name: 'Coffee',
-    price: 4.99,
-    quantity: 3
-  },
-  {
-    id: '2',
-    name: 'Milk 1L',
-    price: 1.89,
-    quantity: 2
-  }
-];
+import {
+  selectCartProducts,
+  selectCartProductsQuantity
+} from '../redux/selectors/cartProductsSelectors';
 
 export const Cart = () => {
+  const cartProducts = useAppSelector(selectCartProducts);
   const cartProductsQuantity = useAppSelector(selectCartProductsQuantity);
+
   return (
     <>
       <h1 className='p-3'>Cart</h1>
