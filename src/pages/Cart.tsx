@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { CartProduct } from '../components/CartProduct';
+import { useAppSelector } from '../redux/typed-hooks';
+import { selectCartProductsQuantity } from '../redux/selectors/cartProductsSelectors';
 
 // Mock data
 const cartProducts: CartProduct[] = [
@@ -20,11 +22,11 @@ const cartProducts: CartProduct[] = [
 ];
 
 export const Cart = () => {
-  const cartProductsCount = 2;
+  const cartProductsQuantity = useAppSelector(selectCartProductsQuantity);
   return (
     <>
       <h1 className='p-3'>Cart</h1>
-      {cartProductsCount > 0 ? (
+      {cartProductsQuantity > 0 ? (
         <>
           <p>Items in your cart:</p>
           {cartProducts.map(cartProduct => (
