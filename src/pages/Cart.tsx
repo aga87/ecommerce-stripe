@@ -5,12 +5,14 @@ import { CartProduct } from '../components/CartProduct';
 import { useAppSelector } from '../redux/typed-hooks';
 import {
   selectCartProducts,
-  selectCartProductsQuantity
+  selectCartProductsQuantity,
+  selectTotalCostOfCartProducts
 } from '../redux/selectors/cartProductsSelectors';
 
 export const Cart = () => {
   const cartProducts = useAppSelector(selectCartProducts);
   const cartProductsQuantity = useAppSelector(selectCartProductsQuantity);
+  const totalCostOfCartProducts = useAppSelector(selectTotalCostOfCartProducts);
 
   return (
     <>
@@ -25,7 +27,7 @@ export const Cart = () => {
           ))}
 
           <p>
-            <b>Total: Total</b>
+            <b>Total: {totalCostOfCartProducts}</b>
           </p>
 
           <span style={{ marginRight: '10px' }}>
