@@ -33,10 +33,30 @@ const cartProductsSlice = createSlice({
         ...state,
         cartProducts: updatedCartProducts
       };
+    },
+    removeOneFromCart: (state, action: PayloadAction<CartProduct['id']>) => {
+      const productId = action.payload;
+      const updatedCartProducts = state.cartProducts.map(product => {
+        if (product.id === productId) {
+          // Decrease quantity by 1 if the product exists in the cart
+          return { ...product, quantity: product.quantity - 1 };
+        }
+        return product;
+      });
+
+      // Remove the product from the cart if the quantity becomes zero
+      const filteredCartProducts = updatedCartProducts.filter(
+        product => product.quantity > 0
+      );
+
+      return {
+        ...state,
+        cartProducts: filteredCartProducts
+      };
     }
   }
 });
 
 export default cartProductsSlice.reducer;
 
-export const { addToCart } = cartProductsSlice.actions;
+export const { addToCart, removeOneFromCart } = cartProductsSlice.actions;
