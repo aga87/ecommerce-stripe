@@ -5,3 +5,5 @@ type Product = {
 };
 
 type CartProduct = Product & { quantity: number };
+
+type CheckoutItem = Pick<CartProduct, 'id' | 'quantity'>;
