@@ -1,6 +1,8 @@
-import { Application } from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
+import { checkout } from '../routes/checkout';
 import { ping } from '../routes/ping';
+import { errorMiddleware } from '../middleware/error';
 
 export const routes = (app: Application) => {
   const { CLIENT_URL } = process.env;
@@ -10,5 +12,8 @@ export const routes = (app: Application) => {
       origin: host
     })
   );
+  app.use(express.json());
   app.use('/api/v1/ping', ping);
+  app.use('/api/v1/checkout', checkout);
+  app.use(errorMiddleware);
 };
