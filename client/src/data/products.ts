@@ -1,31 +1,31 @@
 export const products: Product[] = [
   {
-    id: '1',
+    id: 'price_1N8Mr4Jm3DVcYwpDPAbfPOVB',
     name: 'Coffee',
     price: 4.99
   },
   {
-    id: '2',
+    id: 'price_1N8MsSJm3DVcYwpDtnmirdS5',
     name: 'Milk 1L',
     price: 1.89
   },
   {
-    id: '3',
+    id: 'price_1N8Mt8Jm3DVcYwpDKbMoUkB8',
     name: 'Bread',
     price: 2.2
   },
   {
-    id: '4',
+    id: 'price_1N8MtVJm3DVcYwpDMTBDQFrW',
     name: 'Butter',
     price: 3.45
   },
   {
-    id: '5',
+    id: 'price_1N8MtsJm3DVcYwpDMSavmtCw',
     name: 'Strawberries 250g',
     price: 3
   },
   {
-    id: '6',
+    id: 'price_1N8MuCJm3DVcYwpDYGFUADai',
     name: 'Eggs',
     price: 3.6
   }
