@@ -1,12 +1,13 @@
 import dotenv from 'dotenv';
 import Stripe from 'stripe';
+import { logger } from './logger';
 
 dotenv.config();
 
 const { STRIPE_API_KEY } = process.env;
 
 if (!STRIPE_API_KEY) {
-  console.error('Stripe API key is missing.');
+  logger.error('Stripe API key is missing.');
   process.exit(1);
 }
 

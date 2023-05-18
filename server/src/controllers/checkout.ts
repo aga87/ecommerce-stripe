@@ -1,4 +1,5 @@
 import { RequestHandler, Request, Response, NextFunction } from 'express';
+import { logger } from '../startup/logger';
 import { stripe } from '../startup/stripe';
 import { validateCheckoutSchema } from '../validators/checkoutSchemaValidator';
 
@@ -27,7 +28,9 @@ export const createCheckoutSession: RequestHandler = async (
     });
 
     if (!session.url) {
-      throw new Error('Unable to create checkout session.');
+      const ERROR_MSG = 'Unable to create checkout session.';
+      logger.error(ERROR_MSG);
+      throw new Error(ERROR_MSG);
     } else {
       return res.send({ url: session.url });
     }
