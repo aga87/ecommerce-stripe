@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../redux/typed-hooks';
+import { useAppSelector, useAppDispatch } from '../../../redux/typed-hooks';
 import {
   selectCheckoutLink,
   selectIsLoadingCheckoutLink,
   selectCheckoutLinkError
-} from '../redux/selectors/checkoutSelectors';
-import { setCheckoutLink } from '../redux/reducers/checkoutSlice';
+} from '../redux/checkoutSelectors';
+import { setCheckoutLink } from '../redux/checkoutSlice';
 
 export const useRedirectToCheckout = () => {
   const isLoading = useAppSelector(selectIsLoadingCheckoutLink);

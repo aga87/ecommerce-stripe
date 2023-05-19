@@ -1,4 +1,4 @@
-import { createApiInstance, getError } from '../libs/axios';
+import { createApiInstance, getError } from '../../../libs/axios';
 
 const getApiInstance = async () => {
   const baseURL = process.env.API_URL || 'http://localhost:5000/api/v1/';

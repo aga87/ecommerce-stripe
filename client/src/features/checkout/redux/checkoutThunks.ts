@@ -1,10 +1,10 @@
-import { AppThunk } from '../store';
-import { CheckoutApiService } from '../../services/CheckoutApiService';
+import { AppThunk } from '../../../redux/store';
+import { CheckoutApiService } from '../services/CheckoutApiService';
 import {
   setCheckoutLink,
   setCheckoutLinkLoading,
   setCheckoutLinkError
-} from '../reducers/checkoutSlice';
+} from './checkoutSlice';
 
 export const checkout =
   (checkoutItems: CheckoutItem[]): AppThunk =>
