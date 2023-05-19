@@ -14,7 +14,7 @@ export const CheckoutApiService = {
     try {
       const apiInstance = await getApiInstance();
       const res = await apiInstance.post('/checkout', { checkoutItems });
-      const url: string = res.data.url;
+      const { url }: { url: string } = res.data;
       return { url, error: null };
     } catch (err) {
       return { url: null, error: getError(err) };
