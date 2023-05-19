@@ -1,22 +1,26 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import { CartProduct } from '../components/CartProduct';
-import { useAppSelector } from '../redux/typed-hooks';
+import { Error, HomeButton } from '../../components';
+import { CartProduct } from './components';
+import { useAppSelector } from '../../redux/typed-hooks';
 import {
   selectCartProducts,
   selectCartProductsQuantity,
   selectTotalCostOfCartProducts
-} from '../redux/selectors/cartProductsSelectors';
+} from './redux/cartProductsSelectors';
 
-export const Cart = () => {
+type CartProps = {
+  checkoutButton: React.ReactNode;
+  checkoutError: string[] | null;
+};
+
+export const Cart = ({ checkoutButton, checkoutError }: CartProps) => {
   const cartProducts = useAppSelector(selectCartProducts);
   const cartProductsQuantity = useAppSelector(selectCartProductsQuantity);
   const totalCostOfCartProducts = useAppSelector(selectTotalCostOfCartProducts);
 
   return (
     <div style={{ paddingBottom: '20px' }}>
-      <h1 className='p-3'>Cart</h1>
+      {checkoutError && <Error text={checkoutError.join(' ')} />}
       {cartProductsQuantity > 0 ? (
         <>
           <p>Items in your cart:</p>
@@ -35,16 +39,12 @@ export const Cart = () => {
           <p style={{ fontSize: '20px' }}>
             <b>Total: {totalCostOfCartProducts}</b>
           </p>
-          <span style={{ marginRight: '10px' }}>
-            <Button variant='success'>Purchase items!</Button>
-          </span>
+          <span style={{ marginRight: '10px' }}>{checkoutButton}</span>
         </>
       ) : (
         <p>There are no items in your cart.</p>
       )}
-      <NavLink to='/' className='btn btn-primary'>
-        Back to the Store
-      </NavLink>
+      <HomeButton />
     </div>
   );
 };

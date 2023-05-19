@@ -1,14 +1,14 @@
 import dotenv from 'dotenv';
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
+import { logger } from './startup/logger';
+import { routes } from './startup/routes';
 
 dotenv.config();
 
 const app: Application = express();
 
-app.get('/ping', (req: Request, res: Response) => {
-  res.send('Hello World');
-});
+routes(app);
 
 const { PORT } = process.env;
 const port = PORT || 5000;
-app.listen(PORT, () => console.log(`Listening on port ${port}...`));
+app.listen(PORT, () => logger.info(`Listening on port ${port}...`));
